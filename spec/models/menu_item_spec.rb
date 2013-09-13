@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 describe MenuItem do
   context "validations" do
     it { should validate_presence_of :name }
@@ -8,10 +9,14 @@ describe MenuItem do
   end
 
   context "associations" do
-    it { pending }
+    it { should belong_to :menu }
   end
 
-  context "#name" do
-    it { pending }
+  context "#name" do 
+    let(:name) {"fish"}
+    let(:item) {MenuItem.new(name: name)}
+    it "returns the name" do
+      expect(item.name).to eq "fish"
+    end
   end
 end
